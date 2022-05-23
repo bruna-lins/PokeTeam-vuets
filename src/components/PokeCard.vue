@@ -9,9 +9,9 @@
               <p class="mb-2 text-2xl font-normal tracking-tight text-gray-400 dark:text-white">
                 {{ props.pokemon.entry_number }} </p>
               <div class="flex justify-center">
-                <!-- <img :src="getPokemonImg(props.pokemon.entry_number)" alt="image" /> -->
+                <img :src="getPokemonImg(props.pokemon.entry_number)" alt="image" />
               </div>
-              <h3 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"> {{ props.pokemon.name }}
+              <h3 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"> {{ props.pokemon.pokemon_species.name }}
               </h3>
             </div>
           </div>
@@ -21,12 +21,9 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import Pokemons from '../interfaces/pokemons';
 import { defineProps } from 'vue';
-
-export default {
-  setup() {
 
     interface Props {
       pokemon: Pokemons
@@ -34,15 +31,12 @@ export default {
 
     const props = defineProps<Props>();
 
-    // function getPokemonImg(entryNumber: number): string {
-    //   var str = "" + entryNumber;
-    //   var pad = "000";
-    //   const ans = pad.substring(0, pad.length - str.length) + str;
-    //   const url = `https://raw.githubusercontent.com/oscarcz7/poke_api/master/src/assets/pokemon/${ans}.png`;
-    //   return url;
-    // }
+    function getPokemonImg(entryNumber: number): string {
+      var str = "" + entryNumber;
+      var pad = "000";
+      const ans = pad.substring(0, pad.length - str.length) + str;
+      const url = `https://raw.githubusercontent.com/oscarcz7/poke_api/master/src/assets/pokemon/${ans}.png`;
+      return url;
+    }
 
-  }
-
-}
 </script>

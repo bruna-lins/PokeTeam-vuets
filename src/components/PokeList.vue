@@ -1,9 +1,7 @@
 <template>
   <div>
-    <div v-for="(pokemon, i) in data" :key="i">
-      <p>{{ pokemon.entry_number }} + {{ pokemon.pokemon_species.name }}</p>
-    </div>
-    <!-- <pokeCard v-for="(pokemon, i) in data" :key="i" :pokemon="pokemon" :id="pokemon.id" /> -->
+
+    <pokeCard v-for="(pokemon, i) in data" :key="i" :pokemon="pokemon" :id="pokemon.entry_number" />
   </div>
 </template>
 
