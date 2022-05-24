@@ -57,7 +57,7 @@
             </router-link>
           </li>
           <li>
-            <router-link to="/about" class="
+            <router-link to="/team" class="
                 block
                 py-2
                 pr-4

@@ -10,4 +10,5 @@ export default interface Pokemons {
   sprites: string
 }
 
+// apagar???
 export type pokeTeam = object | Pokemons;

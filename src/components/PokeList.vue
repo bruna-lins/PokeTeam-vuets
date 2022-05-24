@@ -1,7 +1,6 @@
 <template>
-  <div>
-
-    <pokeCard v-for="(pokemon, i) in data" :key="i" :pokemon="pokemon" :id="pokemon.entry_number" />
+  <div class="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1">
+    <PokeCard v-for="(pokemon, i) in data" :key="i" :pokemon="pokemon" :id="pokemon.entry_number" />
   </div>
 </template>
 
@@ -19,6 +18,7 @@ export default {
     const pokemon = reactive<Pokemons>({
       id: 0,
       entry_number: 0,
+      pokemon_species: [],
       name: "",
       type: "",
       image: "",
@@ -32,7 +32,6 @@ export default {
     onBeforeMount(async () => {
       const response = await api.allPokemons()
       data.value = response.data.pokemon_entries
-      console.log(data.value)
     })
 
     return { data }
