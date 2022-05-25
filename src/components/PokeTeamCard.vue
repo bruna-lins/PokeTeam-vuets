@@ -6,12 +6,13 @@
         <div class="text-center">
           <span
             class="bg-green-50 text-gray-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">
-            #1
+            {{ pokemon.entry_number }}
           </span>
-          pic
-          <!-- <img :src="getPokemonImg(pokemon.entry_number)" alt="image" class="h-21 w-21 overflow-hidden" /> -->
+          <img :src="getPokemonImg(pokemon.entry_number)" alt="image" class="h-21 w-21 overflow-hidden" />
           <h5 class="mt-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-            bulbasaur
+            {{
+              pokemon.pokemon_species.name.toUpperCase()
+            }}
           </h5>
           <div>
             <label for="nickname"
@@ -33,7 +34,7 @@
 </template>
 
 <script setup lang="ts">
-import { Pokemons } from '../interfaces/pokemons';
+import { Pokemons, Pokemon } from '../interfaces/pokemons';
 import { mutations } from '../store/mutation-types'
 import { useStore } from 'vuex'
 
@@ -41,18 +42,16 @@ const store = useStore();
 
 const { REMOVE_FROM_POKETEAM } = mutations;
 
-
-
-// function getPokemonImg(entryNumber: number): string {
-//   var str = "" + entryNumber;
-//   var pad = "000";
-//   const ans = pad.substring(0, pad.length - str.length) + str;
-//   const url = `https://raw.githubusercontent.com/oscarcz7/poke_api/master/src/assets/pokemon/${ans}.png`;
-//   return url;
-// }
+function getPokemonImg(entryNumber: number): string {
+  var str = "" + entryNumber;
+  var pad = "000";
+  const ans = pad.substring(0, pad.length - str.length) + str;
+  const url = `https://raw.githubusercontent.com/oscarcz7/poke_api/master/src/assets/pokemon/${ans}.png`;
+  return url;
+}
 
 function removePokemon(entry_number: number) {
-  store.commit(REMOVE_FROM_POKETEAM, entry_number)
+  store.commit('REMOVE_FROM_POKETEAM', entry_number)
   console.log('Pokemon has been removed.')
 }
 
