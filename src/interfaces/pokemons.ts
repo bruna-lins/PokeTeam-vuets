@@ -4,11 +4,10 @@ export default interface Pokemons {
   pokemon_species: [];
   name?: string;
   type?: string;
-  image?: string;
-  myTeam: pokeTeam;
+  pokeTeam: pokeTeam;
   types: [];
   sprites: string
 }
 
-// apagar???
-export type pokeTeam = object | Pokemons;
+// // apagar???
+// export type pokeTeam = object | Pokemons;

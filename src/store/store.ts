@@ -2,6 +2,7 @@ import Pokemons from "src/interfaces/pokemons"
 import Vuex from "vuex"
 import VuexPersistence from "vuex-persist"
 import api from '../services/api'
+import {pokes} from '../store/mutation-types'
 
 interface State {
   pokemons: object[],
@@ -28,18 +29,23 @@ const store = new Vuex.Store<State>({
       state.pokeTeam = [...state.pokeTeam, pokemonSelected]
     },
     REMOVE_FROM_POKETEAM(state, entry_number) {
-      state.pokeTeam = state.pokeTeam.filter((x) => x.entry_number !== entry_number)
+      state.pokeTeam.splice(entry_number, 1)
     },
-    ADD_POKEMONS() {
-
-    }
+    // ADD_POKEMONS(state, payload) {
+    //   state.pokemons = [];
+    //   state.pokemons = payload;
+    // }
+    SET_NICKNAME(state, { name, entry_number }) {
+      state.pokeTeam[entry_number].name = name
+      console.log('I think they liked.')
+  }
   },
-  actions: {
-    addPokemons({commit}, payload) {
-      const req = api.allPokemons();
-      commit(ADD_POKEMONS, payload)
-    }
-  },
+  // actions: {
+  //   addPokemons({ commit }, payload) {
+  //     const req = api.allPokemons();
+  //     commit(ADD_POKEMONS, payload)
+  //   }
+  // },
   plugins: [vuexLocal.plugin]
 })
 

@@ -13,13 +13,9 @@ const routes = [
     component: Home,
   },
   {
-    path: '/details',
+    path: '/details/:id',
     meta: { title: 'Details' },
     component: Details,
-    // example of route level code-splitting
-    // this generates a separate chunk (About.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    // component: () => import('../views/About.vue')
   },
   {
     path: '/team',
