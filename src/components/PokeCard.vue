@@ -45,7 +45,11 @@ function getPokemonImg(entryNumber: number): string {
 
 
 function addPokemonInTeam(payload: Pokemon) {
-  store.commit('ADD_POKEMON_IN_TEAM', payload)
+  if (store.state.pokeTeam.length <= 4) {
+    store.commit('ADD_POKEMON_IN_TEAM', payload)
+  } else {
+    alert("You can't add more pokemons")
+  }
 }
 
 // function addPokemonTeam(entry_number: number) {

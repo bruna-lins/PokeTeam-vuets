@@ -1,13 +1,10 @@
 <template>
   <div class=" bg-green-100 min-h-full flex flex-col items-center justify-center">
     <div
-      class=" mt-5 flex-grow flex flex-col bg-white border-t border-b sm:rounded sm:border shadow overflow-hidden mb-10">
+      class="mt-2 flex-grow flex flex-col bg-white border-t border-b sm:rounded sm:border shadow overflow-hidden mb-3">
       <div class="border-b">
-        <div class="flex justify-center px-6 mb-12">
-          <h3 class="mt-3 mb-3 p-2 text-3xl font-semibold text-gray-80"> Pokemon Team
-            <span
-            v-if="totalTeam > 0"
-            class="text-base"> {{ totalTeam }} Pokemons</span>
+        <div class="flex justify-center px-6">
+          <h3 class="mt-3 p-2 text-3xl font-semibold text-gray-80"> Pokemon Team
           </h3>
         </div>
         <div class="mt-5">

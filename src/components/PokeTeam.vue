@@ -1,6 +1,5 @@
 <template>
-  <div class="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1
-  grid-rows-5 h-25 mb-10">
+  <div class=" flex mx-auto my-12 container px-4">
     <PokeTeamCard />
   </div>
 </template>
