@@ -184,5 +184,3 @@ export interface Type {
   type: Species;
 }
 
-// // apagar???
-// export type pokeTeam = object | Pokemons;

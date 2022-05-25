@@ -26,12 +26,9 @@ const store = new Vuex.Store<State>({
       console.log('payload: ', payload)
       state.pokeTeam.push(payload)
     },
-    //editar, não tá mais funcionando
-    REMOVE_FROM_POKETEAM(state, id) {
-      // let i = state.pokeTeam.map(pokemon => pokemon.entry_number).indexOf(entry_number);
-      console.log(state.pokeTeam)
-      state.pokeTeam = state.pokeTeam.filter(
-        (p) => p.id !== p.id
+    REMOVE_FROM_POKETEAM(state, entry_number) {
+      state.pokeTeam.filter(
+        (p) => p.entry_number !== p.entry_number
       )
 
     },
@@ -40,14 +37,7 @@ const store = new Vuex.Store<State>({
     //   console.log('I think they liked.')
     // }
   },
-  actions: {
-    // addPokemonInTeam({ commit }, pokemon) {
-    //   const poketeam = store.state.pokeTeam
-    //   poketeam.push(response.data)
-    //   this.commit('ADD_POKEMON_IN_TEAM', response.data)
-    // },
 
-  },
   plugins: [vuexLocal.plugin]
 
 })
