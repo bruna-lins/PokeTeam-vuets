@@ -26,10 +26,9 @@ const store = new Vuex.Store<State>({
       console.log('payload: ', payload)
       state.pokeTeam.push(payload)
     },
-    REMOVE_FROM_POKETEAM(state, id) {
-     state.pokeTeam = state.pokeTeam.filter(
-        (p) => p.id !== p.id
-      )
+    REMOVE_FROM_POKETEAM(state, payload) {
+    const i = state.pokeTeam.map(item => item.id).indexOf(payload);
+    state.pokeTeam.splice(i, 1);
     },
     // SET_NICKNAME(state, { name, entry_number }) {
     //   state.pokeTeam[entry_number].name = name
