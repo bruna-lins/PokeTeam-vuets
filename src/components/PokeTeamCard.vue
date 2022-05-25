@@ -33,16 +33,15 @@
 </template>
 
 <script setup lang="ts">
-import Pokemons from '../interfaces/pokemons';
-import { pokes } from '../store/mutation-types'
+import { Pokemons } from '../interfaces/pokemons';
+import { mutations } from '../store/mutation-types'
 import { useStore } from 'vuex'
-import { computed } from 'vue';
 
 const store = useStore();
 
-const { REMOVE_FROM_POKETEAM, SET_NICKNAME } = pokes;
+const { REMOVE_FROM_POKETEAM } = mutations;
 
-const pokeTeam = computed(() => store.state.pokeTeam)
+
 
 // function getPokemonImg(entryNumber: number): string {
 //   var str = "" + entryNumber;
