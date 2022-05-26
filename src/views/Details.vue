@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="pokemon">
     <div
       class="justify-center flex-grow flex flex-co border-t border-b sm:rounded sm:border shadow overflow-hidden bg-green-50">
       <div class="flex justify-center px-6 -mb-px">
@@ -24,9 +24,9 @@
             <p> {{ pokemon?.types[1].type.name }} </p>
           </div>
           <div>
-          <h3>ABILITIES</h3>
-          <p> {{ pokemon?.abilities[0].ability.name }} </p>
-          <p> {{ pokemon?.abilities[1].ability.name }} </p>
+            <h3>ABILITIES</h3>
+            <p> {{ pokemon?.abilities[0].ability.name }} </p>
+            <p> {{ pokemon?.abilities[1].ability.name }} </p>
           </div>
         </div>
       </div>
@@ -39,15 +39,17 @@
 
 <script setup lang="ts">
 import api from "../services/api";
-import { computed, onBeforeMount, ref } from "vue";
+import { onBeforeMount, ref } from "vue";
 import { Pokemon } from "../interfaces/pokemons";
+import { useRoute } from "vue-router";
 
-const pokeId = computed(() => parseInt(this.$route.params.id))
-
+const route = useRoute()
 const pokemon = ref<Pokemon>()
 
+const pokeId = Number(route.params.id);
+
 onBeforeMount(async () => {
-  const response = await api.detailsPokemon(2)
+  const response = await api.detailsPokemon(pokeId)
   pokemon.value = response.data
   console.log(pokemon.value)
 })
@@ -59,15 +61,6 @@ function getPokemonImg(entryNumber: number): string {
   const url = `https://raw.githubusercontent.com/oscarcz7/poke_api/master/src/assets/pokemon/${ans}.png`;
   return url;
 }
-
-
-// tentando dar match na route // REVER
-
-// function pokemon() {
-//   return data.pokemon.find(pokemon => pokemon.id === this.pokemonId)
-// },
-// const poke = computed(() => data.pokemon.find(pokemon => pokemon.id === pokeId))
-
 
 
 </script>
