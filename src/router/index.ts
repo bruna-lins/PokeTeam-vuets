@@ -15,7 +15,8 @@ const routes = [
   {
     path: '/details/:id',
     meta: { title: 'Details' },
-    component: Details,
+    props: true,
+    component: () => import('../views/Details.vue')
   },
   {
     path: '/team',

@@ -49,16 +49,8 @@ function addPokemonInTeam(payload: Pokemon) {
     store.commit('ADD_POKEMON_IN_TEAM', payload)
   } else {
     alert("You can't add more pokemons")
+    return
   }
 }
-
-// function addPokemonTeam(entry_number: number) {
-//   if (store.state.pokeTeam.length <= 5) {
-//     store.commit(ADD_TO_POKETEAM, entry_number)
-//     console.log(store.state)
-//   } else {
-//     console.log("You can't add more pokemons")
-//     return
-//   }
 
 </script>

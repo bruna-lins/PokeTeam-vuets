@@ -8,7 +8,7 @@
           </h3>
         </div>
         <div class="mt-5">
-          <pokeTeam />
+          <PokeTeam />
         </div>
       </div>
     </div>
@@ -19,7 +19,7 @@
           <h3 class="mt-3 mb-3 p-2 text-3xl font-semibold text-gray-800"> Pokemon List
           </h3>
         </div>
-        <pokeList />
+        <PokeList />
       </div>
     </div>
   </div>

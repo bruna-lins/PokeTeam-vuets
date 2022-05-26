@@ -7,20 +7,9 @@
 
 <script setup lang="ts">
 import api from '../services/api';
-import { onBeforeMount, reactive, ref } from 'vue';
+import { onBeforeMount, ref } from 'vue';
 import PokeCard from './PokeCard.vue'
 import Pokemons from '../interfaces/pokemons';
-
-    const pokemon = reactive<Pokemons>({
-      id: 0,
-      entry_number: 0,
-      pokemon_species: [],
-      name: "",
-      type: "",
-      pokeTeam: [],
-      types: [],
-      sprites: ""
-    })
 
     const data = ref<any>()
 
@@ -29,36 +18,3 @@ import Pokemons from '../interfaces/pokemons';
       data.value = response.data.pokemon_entries
     })
 </script>
-<!-- <script lang="ts">
-import api from '../services/api';
-import { onBeforeMount, reactive, ref } from 'vue';
-import PokeCard from './PokeCard.vue'
-import Pokemons from '../interfaces/pokemons';
-
-export default {
-  components: {
-    PokeCard
-  },
-  setup() {
-    const pokemon = reactive<Pokemons>({
-      id: 0,
-      entry_number: 0,
-      pokemon_species: [],
-      name: "",
-      type: "",
-      pokeTeam: [],
-      types: [],
-      sprites: ""
-    })
-
-    const data = ref<any>()
-
-    onBeforeMount(async () => {
-      const response = await api.allPokemons()
-      data.value = response.data.pokemon_entries
-    })
-
-    return { data }
-  }
-}
-</script> -->
