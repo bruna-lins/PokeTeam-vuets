@@ -37,6 +37,9 @@
               <button type="button"
                 class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 mt-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
                 @click="deletePoketeam(team)">Delete</button>
+              <button type="button"
+                class="focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 mt-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+                @click="editPoketeam(team)">Edit</button>
             </div>
           </div>
         </div>
@@ -50,9 +53,11 @@ import { computed } from '@vue/runtime-core';
 import { Pokemon } from '../interfaces/pokemons';
 import { mutations } from '../store/mutation-types';
 import { useStore } from 'vuex';
+import { useRouter } from 'vue-router';
 
-const { DELETE_POKETEAM } = mutations;
+const { DELETE_POKETEAM, ADD_POKEMON_IN_TEAM } = mutations;
 
+const router = useRouter();
 const store = useStore();
 
 const allTeams = computed(() => store.state.allTeams)
@@ -68,6 +73,14 @@ function getPokemonImg(entryNumber: number): string {
 function deletePoketeam(team: Pokemon) {
   store.commit(DELETE_POKETEAM, team)
   console.log('The team has been removed.')
+}
+
+function editPoketeam(team: any) {
+  for (let i = 0; i <= 4; i++) {
+    store.commit(ADD_POKEMON_IN_TEAM, team[i]);
+  }
+  deletePoketeam(team);
+  router.push("/");
 }
 
 </script>
