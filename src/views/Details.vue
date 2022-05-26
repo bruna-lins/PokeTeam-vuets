@@ -6,34 +6,66 @@
         <h3 class="mt-3 mb-3 p-2 text-3xl font-semibold text-gray-800"> Pokemon Details</h3>
       </div>
     </div>
-    <div class="pokecard justify-center ml-10 px-5 py-5 flex flex-col">
-      <div class="flex p-6 max-w-sm bg-green-100 rounded-lg border border-gray-200 shadow-md hover:bg-green-200 dark:bg-gray-800
-      dark:border-gray-700 dark:hover:bg-gray-700">
-        <div class="text-center">
+    <div class="flex h-screen w-screen items-center justify-center bg-green-100">
+      <div
+        class="p-8 w-96 cursor-pointer rounded-3xl bg-green-300 transition duration-300 ease-in-out hover:scale-105 hover:bg-green-50">
+        <span class="bg-green-50 text-gray-800 text-sm font-semibold inline-flex items-end p-1.5 rounded-full dark:bg-blue-200 dark:text-blue-800
+       absolute">
+          #{{ pokemon?.id }}
+        </span>
+        <div class="-mb-20 -translate-y-1/2 transform">
+          <img :src="getPokemonImg(pokemon?.id)" alt="pokemon image" class="mx-auto h-64" />
+        </div>
+        <div class="text-center mb-2">
+          <h3 class="text-center text-4xl font-bold">{{ pokemon?.name.toUpperCase() }}</h3>
+        </div>
+        <div class="text-center mb-4">
           <span
-            class="bg-green-50 text-gray-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">#
-            {{ pokemon?.id }}
+            class="px-6 bg-purple-100 text-purple-800 text-xs font-semibold mr-2 py-0.5 rounded dark:bg-purple-200 dark:text-purple-900">{{
+                pokemon?.types[0].type.name
+            }}</span>
+          <!-- <span class="px-6 bg-purple-100 text-purple-800 text-xs font-semibold mr-2 py-0.5 rounded dark:bg-purple-200 dark:text-purple-900">{{ pokemon?.types[1].type.name }}</span> -->
+        </div>
+        <div class="text-center">
+          <ul class="mt-10 mb-10 flex justify-between text-center text-xl">
+            <li class="flex flex-col"><span
+                class="bg-pink-100 text-pink-800 text-sm font-bold px-2.5 py-0.5 rounded dark:bg-pink-200 dark:text-pink-900">
+                HP
+              </span>
+              {{ pokemon?.stats[0].base_stat }}
+            </li>
+            <li class="mx-6 flex flex-col"><span
+                class="bg-red-100 text-red-800 text-sm font-bold px-2.5 py-0.5 rounded dark:bg-red-200 dark:text-red-900">
+                ATTACK
+              </span>
+              {{ pokemon?.stats[1].base_stat }}
+            </li>
+            <li class="flex flex-col"><span
+                class="bg-gray-100 text-gray-800 text-sm font-bold px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">
+                DEFENSE
+              </span>
+              {{ pokemon?.stats[2].base_stat }}
+            </li>
+            <li class="mx-6 flex flex-col"><span
+                class="bg-purple-100 text-purple-800 text-sm font-bold px-2.5 py-0.5 rounded dark:bg-purple-200 dark:text-purple-900">
+                SPEED
+              </span>
+              {{ pokemon?.stats[5].base_stat }}</li>
+          </ul>
+        </div>
+        <div class="text-center">
+          <h3 class="text-center text-2xl font-bold border-t-2 mb-2">ABILITIES</h3>
+          <span
+            class="bg-gray-100 text-gray-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">
+            {{ pokemon?.abilities[0].ability.name }}
           </span>
-          <img :src="getPokemonImg(pokemon?.id)" alt="image" class="h-21 w-21 overflow-hidden" />
-          <h5 class="mt-4 mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-            {{ pokemon?.name }}
-          </h5>
-          <div>
-            <h3>TYPES</h3>
-            <p> {{ pokemon?.types[0].type.name }} </p>
-            <p> {{ pokemon?.types[1].type.name }} </p>
-          </div>
-          <div>
-            <h3>ABILITIES</h3>
-            <p> {{ pokemon?.abilities[0].ability.name }} </p>
-            <p> {{ pokemon?.abilities[1].ability.name }} </p>
-          </div>
+          <!-- <span class="bg-gray-100 text-gray-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">
+            {{ pokemon?.abilities[1].ability.name }}
+          </span> -->
         </div>
       </div>
     </div>
-
   </div>
-
 </template>
 
 
