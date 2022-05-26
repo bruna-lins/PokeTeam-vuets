@@ -38,7 +38,10 @@ const store = new Vuex.Store<State>({
     SAVE_POKETEAM(state) {
       state.allTeams.push({...state.pokeTeam})
       state.pokeTeam = []
-    }
+    },
+    DELETE_POKETEAM(state, payload) {
+      state.allTeams = state.allTeams.filter((t) => t !== payload)
+    },
     // SET_NICKNAME(state, { name, id }) {
     //   state.pokeTeam[id].name = name
     // }
