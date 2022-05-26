@@ -1,5 +1,5 @@
 <template>
-  <div class=" flex mx-auto my-12 container px-4">
+  <div class="flex mx-auto my-12  px-4">
     <PokeTeamCard />
   </div>
 </template>

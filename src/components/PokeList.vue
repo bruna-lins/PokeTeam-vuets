@@ -4,14 +4,13 @@
   </div>
 </template>
 
-
 <script setup lang="ts">
 import api from '../services/api';
 import { onBeforeMount, ref } from 'vue';
 import PokeCard from './PokeCard.vue'
 import Pokemons from '../interfaces/pokemons';
 
-    const data = ref<any>()
+    const data = ref<Pokemons>()
 
     onBeforeMount(async () => {
       const response = await api.allPokemons()

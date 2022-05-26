@@ -5,8 +5,8 @@ import api from '../services/api'
 import { mutations } from '../store/mutation-types'
 
 interface State {
-  pokemons: Pokemons[]
-  pokeTeam: Pokemon[]
+  pokeTeam: Pokemon[],
+  allTeams: object[]
 }
 
 const vuexLocal = new VuexPersistence({
@@ -15,8 +15,8 @@ const vuexLocal = new VuexPersistence({
 
 const store = new Vuex.Store<State>({
   state: {
-    pokemons: [],
-    pokeTeam: []
+    pokeTeam: [],
+    allTeams: []
   },
   getters: {
     totalTeam(state) {
@@ -33,6 +33,10 @@ const store = new Vuex.Store<State>({
       const i = state.pokeTeam.map(item => item.id).indexOf(payload);
       state.pokeTeam.splice(i, 1);
     },
+    SAVE_TEAM(state) {
+      state.allTeams.push({...state.pokeTeam})
+      state.pokeTeam = []
+    }
     // SET_NICKNAME(state, { name, id }) {
     //   state.pokeTeam[id].name = name
     // }
