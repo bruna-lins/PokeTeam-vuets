@@ -1,6 +1,6 @@
 <template>
   <div v-if="pokemon">
-    <div
+       <div
       class="justify-center flex-grow flex flex-co border-t border-b sm:rounded sm:border shadow overflow-hidden bg-green-50">
       <div class="flex justify-center px-6 -mb-px">
         <h3 class="mt-3 mb-3 p-2 text-3xl font-semibold text-gray-800"> Pokemon Details</h3>
