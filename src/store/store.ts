@@ -1,4 +1,4 @@
-import { Pokemon, Pokemons } from "src/interfaces/pokemons"
+import { Pokemon } from "src/interfaces/pokemons"
 import Vuex from "vuex"
 import VuexPersistence from "vuex-persist"
 import api from '../services/api'
@@ -25,15 +25,17 @@ const store = new Vuex.Store<State>({
   },
   mutations: {
     ADD_POKEMON_IN_TEAM(state, payload) {
-      console.log('payload: ', payload)
       state.pokeTeam.push(payload)
     },
     REMOVE_FROM_POKETEAM(state, payload) {
-      // state.pokeTeam = state.pokeTeam.filter((p) => p.id !== p.id)
+      //REMOVENDO TODOS DE UMA VEZ
+      // state.pokeTeam = state.pokeTeam.filter((p) => p.id !== payload.id)
+
+      //REMOVENDO POR ORDEM NO ARRAY
       const i = state.pokeTeam.map(item => item.id).indexOf(payload);
       state.pokeTeam.splice(i, 1);
     },
-    SAVE_TEAM(state) {
+    SAVE_POKETEAM(state) {
       state.allTeams.push({...state.pokeTeam})
       state.pokeTeam = []
     }

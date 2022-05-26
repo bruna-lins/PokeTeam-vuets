@@ -35,21 +35,23 @@
       </div>
     </div>
     <button type="button"
-      class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-6 py-1.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">
+      class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-6 py-1.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
+      @click="savePokeTeam">
       Save Team
     </button>
   </div>
 </template>
 
 <script setup lang="ts">
-import { Pokemons, Pokemon } from '../interfaces/pokemons';
+import { Pokemon } from '../interfaces/pokemons';
 import { mutations } from '../store/mutation-types'
 import { useStore } from 'vuex'
-import { ref } from '@vue/reactivity';
+import { useRouter } from 'vue-router';
 
+const router = useRouter();
 const store = useStore();
 
-const { REMOVE_FROM_POKETEAM, SET_NICKNAME } = mutations;
+const { REMOVE_FROM_POKETEAM, SET_NICKNAME, SAVE_POKETEAM } = mutations;
 
 // const nickname = ref('')
 
@@ -61,9 +63,16 @@ function getPokemonImg(entryNumber: number): string {
   return url;
 }
 
-function removePokemon(id: number) {
-  store.commit(REMOVE_FROM_POKETEAM, id)
+function removePokemon(pokemon: Pokemon) {
+  store.commit(REMOVE_FROM_POKETEAM, pokemon)
   console.log('Pokemon has been removed.')
+}
+
+function savePokeTeam() {
+  console.log('team saved');
+  store.commit(SAVE_POKETEAM, store.state.pokeTeam)
+  console.log(store.state.allTeams)
+  router.push("/team")
 }
 
 // function giveNickname(id: number, name: string) {
