@@ -69,7 +69,7 @@ function removePokemon(pokemon: Pokemon) {
 }
 
 function savePokeTeam() {
-  console.log('team saved');
+  console.log('team has been saved');
   store.commit(SAVE_POKETEAM, store.state.pokeTeam)
   console.log(store.state.allTeams)
   router.push("/team")
