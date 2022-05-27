@@ -5,6 +5,7 @@ import api from '../services/api'
 import { mutations } from '../store/mutation-types'
 
 interface State {
+  pokemon: Pokemon[],
   pokeTeam: Pokemon[],
   allTeams: object[]
 }
@@ -15,18 +16,20 @@ const vuexLocal = new VuexPersistence({
 
 const store = new Vuex.Store<State>({
   state: {
+    pokemon: [],
     pokeTeam: [],
     allTeams: []
   },
-  getters: {
-    totalTeam(state) {
-      return state.pokeTeam.length
-    },
-  },
+  // getters: {
+  //   totalTeam(state) {
+  //     return state.pokeTeam.length
+  //   },
+  // },
   mutations: {
     ADD_POKEMON_IN_TEAM(state, payload) {
       state.pokeTeam.push(payload)
     },
+    // CORRIGIR
     REMOVE_FROM_POKETEAM(state, payload) {
       //REMOVENDO TODOS DE UMA VEZ
       // state.pokeTeam = state.pokeTeam.filter((p) => p.id !== payload.id)
@@ -42,8 +45,14 @@ const store = new Vuex.Store<State>({
     DELETE_POKETEAM(state, payload) {
       state.allTeams = state.allTeams.filter((t) => t !== payload)
     },
+    SET_NICKNAME(state, {nickname, id}) {
+      state.pokeTeam = state.pokeTeam.filter(
+        (p) => p.id === id
+      )
+      state.pokeTeam[id].name = nickname
+    }
     // SET_NICKNAME(state, { name, id }) {
-    //   state.pokeTeam[id].name = name
+    //   state.pokemon[id].name = name
     // }
   },
 
