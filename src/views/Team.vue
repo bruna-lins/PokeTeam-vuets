@@ -76,8 +76,12 @@ function deletePoketeam(team: Pokemon) {
 }
 
 function editPoketeam(team: any) {
-  for (let i = 0; i <= 4; i++) {
-    store.commit(ADD_POKEMON_IN_TEAM, team[i]);
+  if (store.state.pokeTeam.length > 0) {
+    alert("You're already editing a team")
+  } else {
+    for (let i = 0; i <= 4; i++) {
+      store.commit(ADD_POKEMON_IN_TEAM, team[i]);
+    }
   }
   deletePoketeam(team);
   router.push("/");

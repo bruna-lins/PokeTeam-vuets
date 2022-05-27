@@ -25,10 +25,10 @@
                 v-model="nickname">
               <button type="button"
                 class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-6 py-1.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
-                @click="giveNickname(id)">Save</button>
+                @click="setNickname()">Save</button>
             </div>
             <button type="button"
-              class="focus:outline text-white bg-red-700 hover:bg-red-800 fring-4 focus:ring-red-300 font-medium roundetext-sm px-5 py-1.5 dark:bg-red-600 daver:bg-red-700 dark:focus:ring-red-900"
+              class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
               @click="removePokemon(pokemon)">
               Remover
             </button>
@@ -75,6 +75,10 @@ function savePokeTeam() {
   store.commit(SAVE_POKETEAM, store.state.pokeTeam)
   console.log(store.state.allTeams)
   router.push("/team")
+}
+
+function setNickname() {
+  store.commit(SET_NICKNAME)
 }
 
 // const nickname = ref(store.state.pokeTeam[0].pokemon_species.name)
