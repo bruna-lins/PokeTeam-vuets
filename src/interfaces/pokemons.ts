@@ -1,12 +1,12 @@
 export interface Pokemons {
   id: number;
-  entry_number: number;
-  pokemon_species: [];
+  entry_number?: number;
+  pokemon_species?: [];
   name?: string;
   type?: string;
-  pokeTeam: [];
-  types: [];
-  sprites: string
+  pokeTeam?: [];
+  types?: [];
+  sprites?: string
 }
 
 export interface Pokemon {
