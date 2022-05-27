@@ -22,10 +22,10 @@
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Nickname</label>
               <input type="text" id="nickname"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mb-2"
-                v-model="nickname">
+                >
               <button type="button"
                 class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-6 py-1.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
-                @click="setNickname()">Save</button>
+                >Save</button>
             </div>
             <button type="button"
               class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
@@ -50,7 +50,6 @@ import { Pokemon } from '../interfaces/pokemons';
 import { mutations } from '../store/mutation-types'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router';
-import { ref } from 'vue';
 
 const router = useRouter();
 const store = useStore();
@@ -77,21 +76,20 @@ function savePokeTeam() {
   router.push("/team")
 }
 
-function setNickname() {
-  store.commit(SET_NICKNAME)
-}
+
+// const nickname = function setNickname() {
+
+// }
 
 // const nickname = ref(store.state.pokeTeam[0].pokemon_species.name)
-const nickname = ref('')
 
-
-// function giveNickname(id: number, name: string) {
-//   let nickname = {
-//     id: id,
-//     name: name
-//   }
-//   store.commit(SET_NICKNAME, nickname)
-//   console.log('I think they liked.')
-// }
+function giveNickname(id: number, name: string) {
+  let nickname = {
+    id: id,
+    name: name
+  }
+  store.commit(SET_NICKNAME, nickname)
+  console.log('I think they liked.')
+}
 
 </script>
