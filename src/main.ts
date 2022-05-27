@@ -3,8 +3,6 @@ import App from './App.vue'
 import './index.css'
 import 'flowbite'
 
-
-// Router
 import { Router } from './router';
 import store from './store/store';
 

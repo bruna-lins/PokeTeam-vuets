@@ -38,13 +38,10 @@ const store = new Vuex.Store<State>({
       const pokeIdx = state.pokeTeam.indexOf(payload)
       state.pokeTeam.splice(pokeIdx, 1)
     },
-    // SET_NICKNAME(state, {pokemon, id}) {
-    //   let poke = state.pokeTeam.find(
-    //     p => p.id == pokemon.id
-    //   )
-    //   poke = pokemon;
-    //   console.log(poke)
-    // },
+    SET_NICKNAME(state, payload: Pokemon) {
+      const pokeId = state.pokeTeam.indexOf(payload)
+      console.log(pokeId)
+    },
 
     //Team
     SAVE_POKETEAM(state) {
