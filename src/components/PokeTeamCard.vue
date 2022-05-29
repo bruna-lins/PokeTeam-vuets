@@ -7,7 +7,7 @@
           <div class="text-center">
             <span
               class="bg-green-50 text-gray-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">
-              {{ pokemon.entry_number }}
+              # {{ pokemon.entry_number }}
             </span>
             <div class="flex flex-col items-center">
               <img :src="getPokemonImg(pokemon.entry_number)" alt="image" class="mb-3 w-24 h-24" />
@@ -25,12 +25,18 @@
               <Modal :open="isOpen" @closeModal="isOpen = !isOpen">
                 <h2 class="text-2xl font-bold py-4">Try some nice nickname</h2>
                 <div class="relative">
-                  <input type="text" id="floating_outlined"
+                  <input type="text" id="nickname"
                     class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                    placeholder=" " />
+                    placeholder=" "
+                    />
                   <label for="floating_outlined"
                     class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-800 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Nickname
                   </label>
+                  <button type="button"
+                    class="text-white bg-purple-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
+                    >
+                    Save
+                  </button>
                 </div>
               </Modal>
             </div>
@@ -43,11 +49,13 @@
         </div>
       </div>
     </div>
-    <button type="button"
-      class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-6 py-1.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
-      :disabled="store.state.pokeTeam.length <= 3" @click="savePokeTeam">
-      Save Team
-    </button>
+    <div class="self-center">
+      <button type="button"
+        class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-6 py-1.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
+        :disabled="store.state.pokeTeam.length <= 4" @click="savePokeTeam">
+        Save Team
+      </button>
+    </div>
   </div>
 </template>
 
@@ -88,14 +96,14 @@ function savePokeTeam() {
   router.push("/team")
 }
 
-//Modal
-const isOpen = ref(false)
+// const nickname = ref('')
 
-// const nickname = ref(store.state.pokeTeam[0].pokemon_species.name)
-
-// function giveNickname() {
-//   store.commit(SET_NICKNAME)
+// function giveNickname(nickname: string) {
+//   store.commit(SET_NICKNAME, nickname)
 //   console.log('I think they liked.')
 // }
+
+//Modal
+const isOpen = ref(false)
 
 </script>

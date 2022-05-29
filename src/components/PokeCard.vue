@@ -6,9 +6,9 @@
         <span
           class="bg-green-50 text-gray-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">#
           {{ pokemon.entry_number }}</span>
-        <img :src="getPokemonImg(props.pokemon.entry_number)" alt="image" class="h-21 w-21 overflow-hidden" />
+        <img :src="getPokemonImg(pokemon.entry_number)" alt="image" class="h-21 w-21 overflow-hidden" />
         <h5 class="mt-4 mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"> {{
-            pokemon.pokemon_species.name.toUpperCase()
+            pokemon.pokemon_species?.name.toUpperCase()
         }}
         </h5>
         <button type="button"
@@ -23,7 +23,7 @@
 </template>
 
 <script setup lang="ts">
-import { Pokemons, Pokemon } from '../interfaces/pokemons';
+import { Pokemon, Pokemons } from '../interfaces/pokemons';
 import { useStore } from 'vuex';
 import { mutations } from '../store/mutation-types'
 
@@ -33,7 +33,7 @@ interface Props {
   pokemon: Pokemons
 }
 
-const props = defineProps<Props>();
+const props: any = defineProps<Props>();
 
 function getPokemonImg(entryNumber: number): string {
   var str = "" + entryNumber;
