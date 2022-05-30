@@ -1,5 +1,5 @@
 <template>
-  <transition name="fade">
+  <transition>
     <div v-show="open">
       <div class="absolute flex justify-center bg-black inset-0 z-0">
         <div class="w-full max-w-lg p-3 relative mx-auto my-auto rounded-xl shadow-lg bg-white">
@@ -37,15 +37,3 @@ const closeModal = () => {
 }
 
 </script>
-
-<style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5ms ease-out;
-}
-
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
-}
-</style>
